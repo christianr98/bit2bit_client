@@ -19,10 +19,11 @@ const Home = () => {
     const history = useHistory()
 
     const { loading, data, fetchData } = useFetch(
-        `http://localhost:3030/api/question`
+        `${process.env.REACT_APP_API_URL}/api/question`
       );
 
       useEffect(() => {
+          
           console.log("Search:", search, questions)
         !loading && data && setQuestions(data);
         let aux =
@@ -54,7 +55,7 @@ const Home = () => {
             
             {   !loading && questions &&
                 questions.map((e, index)=>(
-                    <QuestionElement data={e}/>
+                    <QuestionElement key={e._id} data={e}/>
                 ))
             }
         </StyledContainer>

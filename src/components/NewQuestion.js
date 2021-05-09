@@ -37,7 +37,7 @@ const NewQuestion = () => {
             return
         }
         axios.post(
-            `http://localhost:3030/api/question`, 
+            `${process.env.REACT_APP_API_URL}/api/question`, 
               JSON.stringify(dataSubmit),
              {headers: {"Content-Type": 'application/json'}}
           )

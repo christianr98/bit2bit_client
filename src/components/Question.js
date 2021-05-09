@@ -33,7 +33,7 @@ const Question = ({location}) => {
     const {loggedIn, setLoggedIn, user, setUser, userID} = useContext(UserContext)
     const [question, setQuestion] = useState('')
     const { loading, data, fetchData } = useFetch(
-        `http://localhost:3030/api/answer/question/${dataQuestion._id}`
+        `${process.env.REACT_APP_API_URL}/api/answer/question/${dataQuestion._id}`
       );
     const handleChange = (value) => {
         console.log("change: ",value)
@@ -54,7 +54,7 @@ const Question = ({location}) => {
         console.log("question: ", dataSubmit)
         
         axios.post(
-            `http://localhost:3030/api/answer`, 
+            `${process.env.REACT_APP_API_URL}/api/answer`, 
               JSON.stringify(dataSubmit),
              {headers: {"Content-Type": 'application/json'}}
           )

@@ -34,7 +34,7 @@ const Login = () => {
             password: password
         }
         if ( !validEmail(email) ) setError('Ingrese un correo válido')
-        axios.post('http://localhost:3030/api/user/login', dataSubmit)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/user/login`, dataSubmit)
         .then(async res => {
             console.log(handleLogin)
             return await handleLogin(res.data)

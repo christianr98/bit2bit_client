@@ -35,7 +35,7 @@ const Register = () => {
             setError('Ingrese un correo válido')
             return
         }
-        axios.post('http://localhost:3030/api/user/register', 
+        axios.post(`${process.env.REACT_APP_API_URL}/api/user/register`, 
         dataSubmit)
         .then(res => history.push('./login'))
         .catch(error => {

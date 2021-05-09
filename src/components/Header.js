@@ -46,10 +46,7 @@ const Auth = styled.div`
 
 const Header = () => {
     const {loggedIn, setLoggedIn, user, setUser, search, setSearch} = useContext(UserContext)
-    //const [search, setSearch] = useState("")
     const history = useHistory()
-
-    console.log("loggedIn: ",loggedIn)
 
     const handleLogout = () => {
         setLoggedIn(false)
@@ -68,7 +65,7 @@ const Header = () => {
     return (
         <StyledHeader>
             <Logo onClick={onClickLogo}>Bit2Bit Overflow</Logo>
-            <SearchField component="form" onSubmit={{}}>
+            <SearchField component="form">
                 <InputBase
                     placeholder="Buscar"
                     value={search}
