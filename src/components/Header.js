@@ -47,9 +47,8 @@ const Auth = styled.div`
 const Header = () => {
     const {loggedIn, setLoggedIn, user, setUser, search, setSearch} = useContext(UserContext)
     const history = useHistory()
-
     const handleLogout = () => {
-        setLoggedIn(false)
+        setLoggedIn(0)
         setUser(null)
         history.push('/')
     }
@@ -79,12 +78,15 @@ const Header = () => {
             <Auth>
                 
                 { 
-                    !(loggedIn) ? 
-                    <Fragment>
+                    JSON.parse(loggedIn) ? 
+                    <BtnStyleSmall tipo="filled" onClick={() => handleLogout()}>Log out</BtnStyleSmall>
+                    : (
+                    <Fragment>     
                         <BtnStyleSmall tipo="filled" onClick={() => onClickLogin()}>Login</BtnStyleSmall>
                         <BtnStyleSmall tipo="filled" onClick={() => onClickRegister()}>Sign up</BtnStyleSmall>
-                    </Fragment> : 
-                        <BtnStyleSmall tipo="filled" onClick={() => handleLogout()}>Log out</BtnStyleSmall>
+                    </Fragment> 
+                    )
+                    
                 }  
             </Auth>
         </StyledHeader>

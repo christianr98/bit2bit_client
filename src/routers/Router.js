@@ -8,6 +8,7 @@ import Login from '../components/Login';
 import NewQuestion from '../components/NewQuestion';
 import Question from '../components/Question';
 import Register from '../components/Register';
+import AuthRoute from './AuthRoute';
 
 const Router = () => {
   const {loggedIn} = useContext(UserContext)
@@ -17,11 +18,19 @@ const Router = () => {
         <BrowserRouter>
           <Header/>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/newQuestion" component={NewQuestion} /> 
+            <AuthRoute path="/login" type="guest" >
+              <Login/>
+              </AuthRoute>
+            <AuthRoute path="/register" type="guest" >
+              <Register/>
+            </AuthRoute>
+            <AuthRoute path="/newQuestion" type="private" >
+              <NewQuestion/>
+            </AuthRoute>  
             <Route path="/:idQuestion" component={Question} />          
             <Route exact path="/" component={Home} />
+            
+            
           </Switch>
         </BrowserRouter> 
       }

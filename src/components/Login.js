@@ -15,7 +15,7 @@ const Login = () => {
 
     const handleLogin = (data) => {
         console.log('handle login : ',data)
-        setLoggedIn(true)
+        setLoggedIn(1)
         setUser(data.token)
         setUserID(data.id)
         //console.log("login data: ",data)
